@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {View, Text, Button, FlatList} from 'react-native';
+import {View, Text, Button, FlatList, TouchableOpacity} from 'react-native';
 import styles from '../styles/style';
 import {NavigationProp} from '@react-navigation/native';
 import routes from 'navigation/routes';
+import {CourseInterface} from '../types';
 
 interface Props {
   navigation: NavigationProp<any>;
@@ -10,29 +11,81 @@ interface Props {
 
 const COURSE_DATA = [
   {
-    id: 'test1',
-    title: 'Curso 1',
+    _id: 'asdmsakldjskaljj',
+    year: 1,
+    section: 'A',
+    shift: 'mañana',
+    school: 'ES 1',
+    subject: 'Biología',
+    schedule: [
+      {
+        day: 'lunes',
+        time: '9.30 a 10.30',
+      },
+      {day: 'martes', time: '9.30 a 10.30'},
+    ],
+    teacherId: 'Test',
   },
   {
-    id: 'test2',
-    title: 'Curso 2',
+    _id: 'asdmsakldasdaj',
+    year: 2,
+    section: 'A',
+    shift: 'mañana',
+    school: 'ES 2',
+    subject: 'Biología',
+    schedule: [
+      {
+        day: 'lunes',
+        time: '9.30 a 10.30',
+      },
+      {day: 'martes', time: '9.30 a 10.30'},
+    ],
+    teacherId: 'Test',
   },
   {
-    id: 'test3',
-    title: 'Curso 3',
+    _id: 'asasdadsaasdaaj',
+    year: 3,
+    section: 'A',
+    shift: 'tarde',
+    school: 'ES 1',
+    subject: 'Biología',
+    schedule: [
+      {
+        day: 'lunes',
+        time: '9.30 a 10.30',
+      },
+      {day: 'martes', time: '9.30 a 10.30'},
+    ],
+    teacherId: 'Test',
   },
 ];
-const Item = ({title}) => {
+//TODO: Create a new file for this component
+const Item = ({
+  courseInfo,
+  onPressItem,
+}: {
+  courseInfo: string;
+  onPressItem: () => void;
+}) => {
   return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
+    <TouchableOpacity style={styles.item} onPress={() => onPressItem()}>
+      <Text style={styles.title}>{courseInfo}</Text>
+    </TouchableOpacity>
   );
 };
 
 const Courses: React.FC<Props> = (props: Props) => {
   const {navigation} = props;
-  const renderItem = ({item}) => <Item title={item.title} />;
+  const onPressItemHandler = () => {
+    navigation.navigate(routes.COURSE);
+  };
+
+  const renderItem = ({item}: {item: CourseInterface}) => (
+    <Item
+      onPressItem={onPressItemHandler}
+      courseInfo={item.year.toString() + ' ' + item.section + ' ' + item.school}
+    />
+  );
   return (
     <View style={styles.container}>
       <Text>Todos los cursos</Text>
@@ -50,7 +103,7 @@ const Courses: React.FC<Props> = (props: Props) => {
         <FlatList
           data={COURSE_DATA}
           renderItem={renderItem}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item._id}
         />
       </View>
     </View>
