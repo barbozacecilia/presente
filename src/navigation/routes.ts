@@ -1,3 +1,4 @@
+const LOG_IN = 'LogIn';
 const COURSES = 'Cursos';
 const COURSE = 'Curso';
 const ADD_NEW_COURSE = 'Agregar un nuevo curso';
@@ -7,6 +8,7 @@ const DAY_LIST = 'Lista de días';
 const TAKE_LIST = 'Tomar Lista';
 
 export default {
+  LOG_IN,
   COURSES,
   COURSE,
   ADD_NEW_COURSE,
