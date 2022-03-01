@@ -1,5 +1,5 @@
-const COURSES = 'Cursos';
 const LOG_IN = 'LogIn';
+const COURSES = 'Cursos';
 const COURSE = 'Curso';
 const ADD_NEW_COURSE = 'Agregar un nuevo curso';
 const STUDENTS_LIST = 'Lista de estudiantes';
