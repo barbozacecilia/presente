@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {View, Text, Button, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, Button, FlatList} from 'react-native';
 import styles from '../styles/style';
 import {NavigationProp} from '@react-navigation/native';
 import routes from 'navigation/routes';
 import {CourseInterface} from '../types';
+import Item from 'features/courses/components/Item';
 
 interface Props {
   navigation: NavigationProp<any>;
@@ -11,7 +12,7 @@ interface Props {
 
 const COURSE_DATA = [
   {
-    _id: 'asdmsakldjskaljj',
+    _id: 'Test-One-id',
     year: 1,
     section: 'A',
     shift: 'mañana',
@@ -27,7 +28,7 @@ const COURSE_DATA = [
     teacherId: 'Test',
   },
   {
-    _id: 'asdmsakldasdaj',
+    _id: 'Test-two-id',
     year: 2,
     section: 'A',
     shift: 'mañana',
@@ -43,7 +44,7 @@ const COURSE_DATA = [
     teacherId: 'Test',
   },
   {
-    _id: 'asasdadsaasdaaj',
+    _id: 'Test-tree-id',
     year: 3,
     section: 'A',
     shift: 'tarde',
@@ -59,20 +60,6 @@ const COURSE_DATA = [
     teacherId: 'Test',
   },
 ];
-//TODO: Create a new file for this component
-const Item = ({
-  courseInfo,
-  onPressItem,
-}: {
-  courseInfo: string;
-  onPressItem: () => void;
-}) => {
-  return (
-    <TouchableOpacity style={styles.item} onPress={() => onPressItem()}>
-      <Text style={styles.title}>{courseInfo}</Text>
-    </TouchableOpacity>
-  );
-};
 
 const Courses: React.FC<Props> = (props: Props) => {
   const {navigation} = props;

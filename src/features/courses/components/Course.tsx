@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import styles from '../styles/style';
+import styles from '../styles/styleCourse';
 
 const Course: React.FC = () => {
   return (
