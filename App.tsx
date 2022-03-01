@@ -9,6 +9,7 @@ import DayList from 'features/take-list/component/DayList';
 import StudentsList from 'features/students/components/StudentsList';
 import NewStudent from 'features/students/components/NewStudent';
 import TakeList from 'features/take-list/container/TakeList';
+import Auth from 'features/auth/container';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,13 +17,14 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Cursos"
+        initialRouteName={routes.LOG_IN}
         screenOptions={{
           title: 'Todos los cursos',
           headerStyle: {backgroundColor: 'pink'},
           headerTintColor: '#ffff',
           headerTitleStyle: {fontWeight: 'bold'},
         }}>
+        <Stack.Screen name={routes.LOG_IN} component={Auth} />
         <Stack.Screen name={routes.COURSES} component={Courses} />
         <Stack.Screen name={routes.COURSE} component={Course} />
         <Stack.Screen name={routes.ADD_NEW_COURSE} component={NewCourses} />
